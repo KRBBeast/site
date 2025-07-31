@@ -52,3 +52,6 @@ def analyze():
     if html:
         return jsonify({"success": True, "length": len(html)})
     return jsonify({"success": False, "error": "Falha ao obter HTML"})
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=10000)
