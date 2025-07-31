@@ -8,6 +8,25 @@ CORS(app)
 
 logging.basicConfig(level=logging.INFO)
 
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+@app.route("/ping")
+def ping():
+    return jsonify({"status": "ok"})
+
+@app.route("/analyze", methods=["POST"])
+def analyze():
+    data = request.json
+    url = data.get("url")
+    if not url:
+        return jsonify({"error": "URL não fornecida"}), 400
+    html = fetch_html(url)
+    if html:
+        return jsonify({"success": True, "length": len(html)})
+    return jsonify({"success": False, "error": "Falha ao obter HTML"})
+
 @app.route("/scrape", methods=["POST"])
 def scrape_with_scraperapi():
     import os
@@ -33,25 +52,7 @@ def scrape_with_scraperapi():
     except Exception as e:
         return jsonify({"success": False, "error": str(e)})
 
-
-@app.route("/")
-def index():
-    return render_template("index.html")
-
-@app.route("/ping")
-def ping():
-    return jsonify({"status": "ok"})
-
-@app.route("/analyze", methods=["POST"])
-def analyze():
-    data = request.json
-    url = data.get("url")
-    if not url:
-        return jsonify({"error": "URL não fornecida"}), 400
-    html = fetch_html(url)
-    if html:
-        return jsonify({"success": True, "length": len(html)})
-    return jsonify({"success": False, "error": "Falha ao obter HTML"})
-
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000)
+    import os
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
