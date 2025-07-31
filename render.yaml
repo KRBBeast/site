@@ -8,8 +8,8 @@ services:
       - key: FLASK_ENV
         value: production
       - key: SUPABASE_URL
-        value: https://seu-projeto.supabase.co
+        value: https://cnwrcrpihldqejyvgysn.supabase.co
       - key: SUPABASE_KEY
-        value: sua_chave_secreta
+        value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNud3JjcnBpaGxkcWVqeXZneXNuIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1MTU5NzM3OSwiZXhwIjoyMDY3MTczMzc5fQ.GdZPPZvSAslVIgzbmq8rhstK94qxh7WUwH623GUvb4g
       - key: SCRAPERAPI_KEY
-        value: sua_chave_scraperapi
+        value: 2db7bcd2b42c895deb472a3da5aab3e7
