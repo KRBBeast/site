@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: site-fantini
+    env: python
+    buildCommand: ""
+    startCommand: python app.py
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: SUPABASE_URL
+        value: https://seu-projeto.supabase.co
+      - key: SUPABASE_KEY
+        value: sua_chave_secreta
+      - key: SCRAPERAPI_KEY
+        value: sua_chave_scraperapi
